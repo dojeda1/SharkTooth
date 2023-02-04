@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Tooth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Cursor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://VFX/Sprites/shark-Sheet.png" type="Texture" id=4]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 164.0
+margin_top = 176.0
+margin_right = 164.0
+margin_bottom = 176.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 14.0
+text = "Points:"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 48.0
+margin_right = 56.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_right = 68.0
+margin_bottom = 14.0
+text = "Bad Teeth:"
+
+[node name="BadTeethLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 72.0
+margin_right = 80.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Shark" type="Node2D" parent="."]
+position = Vector2( 500, 300 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Shark"]
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Teeth" type="Node2D" parent="Shark"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tooth" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -94, 93 )
+
+[node name="Tooth2" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -70, 120 )
+
+[node name="Tooth3" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -42, 134 )
+
+[node name="Tooth4" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -14, 142 )
+
+[node name="Tooth5" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 16, 145 )
+
+[node name="Tooth6" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 45, 137 )
+
+[node name="Tooth7" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 72, 121 )
+
+[node name="Tooth8" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 95, 97 )
+
+[node name="Tooth9" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -92, 30 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth10" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -70, 7 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth11" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -45, -13 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth12" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( -17, -21 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth13" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 14, -21 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth14" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 41, -11 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth15" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 68, 1 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth16" parent="Shark/Teeth" instance=ExtResource( 1 )]
+position = Vector2( 92, 27 )
+scale = Vector2( 1, -1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Cursor" parent="Node2D" instance=ExtResource( 3 )]

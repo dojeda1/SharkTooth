@@ -9,6 +9,8 @@ export var is_dirty = false
 var is_active = false
 export var state = "empty"
 
+var rng = RandomNumberGenerator.new()
+
 onready var ap = $"%AnimationPlayer"
 onready var wiggle_ap = $"%WiggleAnimationPlayer"
 onready var init_rot_timer = $"%InitRotTimer"
@@ -27,6 +29,11 @@ func _ready():
 #func _process(delta):
 #  if (Input.is_action_just_released("mouse_click")):
 #    reset_tooth()
+
+func rand(x, y):
+  rng.randomize()
+  return rng.randf_range(x,y)
+
 func init_rot():
   init_rot_timer.start(0)
 
@@ -35,6 +42,8 @@ func grow():
 
 func idle():
   is_dirty = false
+  init_rot_timer.wait_time = rand(1, 15)
+#  init_rot_timer.wait_time = 0.2
   init_rot()
   rot_timer.stop()
   ap.play("idle")
@@ -55,15 +64,22 @@ func dirty_3():
   is_dirty = true
   ap.play("dirty_3")
 
+func rotting():
+  is_dirty = true
+  ap.play("dirty_3")
+  wiggle_ap.play("wiggle_large")
+
 func rotted():
   is_dead = true
   rot_timer.stop()
   State.add_bad_teeth(1)
   ap.play("rotted")
+  wiggle_ap.play("idle")
 
 func remove():
   is_dead = false
-  State.sub_bad_teeth(1)
+  State.add_bad_teeth(-1)
+  State.add_points(500)
   ap.play("remove")
 
 func attempt_clean():
@@ -73,7 +89,10 @@ func attempt_clean():
       begin_pull()
 
 func reset_tooth():
-  wiggle_ap.play("idle")
+  if state == "rotting":
+    wiggle_ap.play("wiggle_large")
+  else:
+    wiggle_ap.play("idle")
   pull_timer.stop()
   brush_timer.stop()
   rot_timer.start(0)
@@ -118,6 +137,9 @@ func next_state():
     state = "dirty_3"
     dirty_3()
   elif state == "dirty_3":
+    state = "rotting"
+    rotting()
+  elif state == "rotting":
     state = "rotted"
     rotted()
   elif state == "rotted":
@@ -125,17 +147,21 @@ func next_state():
     pass
 
 func prev_state():
-  if state == "dirty_3":
+  if state == "dirty_3" || state == "rotting":
     state = "dirty_2"
+    State.add_points(300)
     dirty_2()
   elif state == "dirty_2":
     state = "dirty_1"
+    State.add_points(200)
     dirty_1()
   elif state == "dirty_1":
     state = "idle"
+    State.add_points(100)
     idle()
 
 func _on_Tooth_input_event(viewport, event, shape_idx):
+  print(InputEventMouseButton)
   if (event is InputEventMouseButton && event.pressed):
     is_active = true
     rot_timer.stop()

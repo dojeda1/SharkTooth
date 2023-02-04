@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="SkarkTooth"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-State="*res://State.gd"
+State="*res://Scripts/State.gd"
+Global="*res://Scripts/Global.gd"
 
 [display]
 
@@ -65,4 +66,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.682353, 0.886275, 1, 1 )
 environment/default_environment="res://default_env.tres"
