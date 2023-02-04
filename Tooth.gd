@@ -13,7 +13,7 @@ onready var rot_timer = $"%RotTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  empty()
+  next_state()
   pass # Replace with function body.
 
 
@@ -28,6 +28,7 @@ func idle():
   ap.play("idle")
 
 func empty():
+  rot_timer.start(0)
   ap.play("empty")
 
 func dirty_1():
@@ -40,21 +41,34 @@ func dirty_3():
   ap.play("dirty_3")
 
 func rotted():
+  is_dead = true
+  rot_timer.stop()
   ap.play("rotted")
+
+func remove():
+  ap.play("remove")
 
 func _on_Tooth_input_event(viewport, event, shape_idx):
     if (event is InputEventMouseButton && event.pressed):
         print("Clicked " + self.name + " dead:" + str(is_dead))
-        clean_tooth()
-        pass # Replace with function body.
+        if !is_dead:
+          clean_tooth()
+        else:
+          pull_tooth()
+
 
 func clean_tooth():
   state = 'idle'
-  rot_timer.start()
+  rot_timer.start(0)
   idle()
 
+func pull_tooth():
+  state = "empty"
+  is_dead = false
+  remove()
 
 func next_state():
+  print(state)
   if state == "empty":
     state = "grow"
     grow()

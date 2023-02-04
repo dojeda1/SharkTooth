@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://VFX/Sprites/tooth-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Tooth.gd" type="Script" id=2]
@@ -73,12 +73,9 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "grow"
-} ]
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -126,6 +123,35 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "remove"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 11, 12, 13, 14, 15, 16, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "empty"
+} ]
+}
+
 [sub_resource type="Animation" id=8]
 resource_name = "rotted"
 tracks/0/type = "value"
@@ -147,7 +173,6 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 17
-frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
@@ -161,11 +186,12 @@ anims/dirty_3 = SubResource( 7 )
 anims/empty = SubResource( 4 )
 anims/grow = SubResource( 3 )
 anims/idle = SubResource( 2 )
+anims/remove = SubResource( 9 )
 anims/rotted = SubResource( 8 )
 
 [node name="RotTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_Tooth_input_event"]
