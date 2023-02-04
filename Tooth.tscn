@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://VFX/Sprites/tooth-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Tooth.gd" type="Script" id=2]
@@ -167,15 +167,65 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "wiggle_large"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -2, 0 ), Vector2( 2, 0 ), Vector2( -2, 0 ), Vector2( 2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "wiggle_small"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -1, 0 ), Vector2( 1, 0 ) ]
+}
+
 [node name="Tooth" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+offset = Vector2( 0, -9 )
 hframes = 17
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -189,10 +239,36 @@ anims/idle = SubResource( 2 )
 anims/remove = SubResource( 9 )
 anims/rotted = SubResource( 8 )
 
-[node name="RotTimer" type="Timer" parent="."]
+[node name="WiggleAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
-autostart = true
+anims/idle = SubResource( 10 )
+anims/wiggle_large = SubResource( 12 )
+anims/wiggle_small = SubResource( 11 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="RotTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="BrushTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 0.4
+one_shot = true
+
+[node name="PullTImer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 1.2
+one_shot = true
+
+[node name="InitRotTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 8.0
+one_shot = true
 
 [connection signal="input_event" from="." to="." method="_on_Tooth_input_event"]
-[connection signal="timeout" from="RotTimer" to="." method="_on_RotTimer_timeout"]
+[connection signal="mouse_exited" from="." to="." method="_on_Tooth_mouse_exited"]
+[connection signal="timeout" from="Timers/RotTimer" to="." method="_on_RotTimer_timeout"]
+[connection signal="timeout" from="Timers/BrushTimer" to="." method="_on_BrushTimer_timeout"]
+[connection signal="timeout" from="Timers/PullTImer" to="." method="_on_PullTImer_timeout"]
+[connection signal="timeout" from="Timers/InitRotTimer" to="." method="_on_InitRotTimer_timeout"]
