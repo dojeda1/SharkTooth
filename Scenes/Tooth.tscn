@@ -292,6 +292,8 @@ one_shot = true
 [node name="BrushSFX" type="AudioStreamPlayer" parent="SFX"]
 unique_name_in_owner = true
 stream = ExtResource( 4 )
+volume_db = -5.0
+pitch_scale = 0.8
 
 [node name="PullSFX" type="AudioStreamPlayer" parent="SFX"]
 unique_name_in_owner = true
