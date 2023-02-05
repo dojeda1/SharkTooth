@@ -8,6 +8,7 @@ var gadget_active = false
 var pulling_teeth = false
 
 var score = 0
+var high_score = 0
 
 signal bad_teeth_updated(num)
 signal pulling
@@ -22,6 +23,8 @@ func add_bad_teeth(amount):
   emit_bad_teeth()
   if bad_teeth >= 6 && !game_over:
     game_over = true
+    if score > high_score:
+      high_score = score
 #    print("--GAME OVER--")
     emit_end_game()
 
@@ -29,6 +32,7 @@ func add_points(amount):
   score += amount
 
 func reset():
+  score = 0
   bad_teeth = 0
   game_over = false
   gadget_active = false
