@@ -9,9 +9,12 @@ onready var score_label = $"%ScoreLabel"
 onready var teeth_label = $"%BadTeethLabel"
 onready var ui = $"%Control"
 onready var menu = $"%MenuControl"
+onready var dark_rect = $"%DarkRect"
 onready var final_score_label = $"%FinalScoreLabel"
 onready var high_score_label = $"%HighScoreLabel"
+onready var rect_timer = $"%RectTimer"
 onready var game_over_sfx = $"%GameOverSFX"
+onready var chomp_sfx = $"%ChompSFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,15 +32,23 @@ func reload():
   get_tree().reload_current_scene()
 
 func _end_game():
+  rect_timer.start()
   play_game_over_sfx()
   final_score_label.text = "$" + str(State.score)
   high_score_label.text = "$" + str(State.high_score)
   ui.visible = false
   menu.visible = true
 
+
 func play_game_over_sfx():
   game_over_sfx.play()
 
 func _on_Button_pressed():
   reload()
+  pass # Replace with function body.
+
+
+func _on_RectTimer_timeout():
+  dark_rect.visible = true
+  chomp_sfx.play()
   pass # Replace with function body.

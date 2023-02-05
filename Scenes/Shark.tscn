@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Shark.gd" type="Script" id=1]
 [ext_resource path="res://VFX/Sprites/fin-Sheet.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://VFX/Sprites/shark-Sheet.png" type="Texture" id=6]
 [ext_resource path="res://VFX/Sprites/eye-left-Sheet.png" type="Texture" id=7]
 [ext_resource path="res://VFX/Sprites/anger-mark-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=9]
 resource_name = "anger_1"
@@ -341,7 +342,6 @@ tracks/3/keys = {
 }
 
 [node name="Shark" type="Node2D"]
-position = Vector2( 500, 300 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -528,3 +528,5 @@ ap_offset = 1
 [node name="Wave3" parent="Waves" instance=ExtResource( 3 )]
 position = Vector2( 182, 479 )
 ap_offset = 2
+
+[node name="Camera2D" parent="." instance=ExtResource( 9 )]
