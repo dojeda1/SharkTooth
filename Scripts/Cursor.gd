@@ -31,16 +31,13 @@ func check_click():
   if Input.is_action_just_pressed("mouse_click"):
     is_active = true
     ap.play("brush")
-    print('BRUSH')
   elif Input.is_action_just_released("mouse_click"):
     is_active = false
     ap.play("idle")
-    print('IDLE')
 
 
 func _on_Cursor_area_entered(area):
   if area.is_in_group("tooth"):
-    print('Tooth')
     print(area.is_dead)
     if area.is_dead:
       sprite.texture = forceps_tex

@@ -9,8 +9,6 @@ export var is_dirty = false
 var is_active = false
 export var state = "empty"
 
-var rng = RandomNumberGenerator.new()
-
 onready var ap = $"%AnimationPlayer"
 onready var wiggle_ap = $"%WiggleAnimationPlayer"
 onready var init_rot_timer = $"%InitRotTimer"
@@ -30,10 +28,6 @@ func _ready():
 #  if (Input.is_action_just_released("mouse_click")):
 #    reset_tooth()
 
-func rand(x, y):
-  rng.randomize()
-  return rng.randf_range(x,y)
-
 func init_rot():
   init_rot_timer.start(0)
 
@@ -42,7 +36,7 @@ func grow():
 
 func idle():
   is_dirty = false
-  init_rot_timer.wait_time = rand(1, 15)
+  init_rot_timer.wait_time = Global.rand(5, 18)
 #  init_rot_timer.wait_time = 0.2
   init_rot()
   rot_timer.stop()
@@ -78,6 +72,7 @@ func rotted():
 
 func remove():
   is_dead = false
+  State.pulling_teeth = false
   State.add_bad_teeth(-1)
   State.add_points(500)
   ap.play("remove")
@@ -96,6 +91,8 @@ func reset_tooth():
   pull_timer.stop()
   brush_timer.stop()
   rot_timer.start(0)
+  State.pulling_teeth = false
+  State.emit_bad_teeth()
 
 func clean_tooth():
   if is_active:
@@ -116,6 +113,8 @@ func begin_brush():
   wiggle_ap.play("wiggle_small")
 
 func begin_pull():
+  State.pulling_teeth = true
+  State.emit_pulling()
   wiggle_ap.play("wiggle_large")
   pull_timer.start(0)
 
@@ -161,21 +160,18 @@ func prev_state():
     idle()
 
 func _on_Tooth_input_event(viewport, event, shape_idx):
-  print(InputEventMouseButton)
   if (event is InputEventMouseButton && event.pressed):
     is_active = true
     rot_timer.stop()
-    print("Clicked " + self.name + " dead:" + str(is_dead))
+#    print("Clicked " + self.name + " dead:" + str(is_dead))
     attempt_clean()
   elif (event is InputEventMouseButton && !event.pressed && is_active):
     is_active = false
-    print('release')
     reset_tooth()
 
 func _on_Tooth_mouse_exited():
   if is_active:
     is_active = false
-    print('exited')
     reset_tooth()
   pass # Replace with function body.
 
@@ -198,5 +194,6 @@ func _on_PullTImer_timeout():
 
 
 func _on_InitRotTimer_timeout():
+  next_state()
   rot_timer.start(0)
   pass # Replace with function body.

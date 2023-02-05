@@ -1,0 +1,61 @@
+extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+onready var ap = $"%AnimationPlayer"
+onready var eyes_ap = $"%EyesAnimationPlayer"
+onready var anger_ap = $"%AngerAnimationPlayer"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+  State.connect("bad_teeth_updated", self, "_bad_teeth_updated")
+  State.connect("pulling", self, "_pulling")
+  ap.play("idle")
+  choose_idle()
+  choose_anger()
+  pass # Replace with function body.
+
+func idle():
+  eyes_ap.play("idle")
+
+func mad_1():
+  eyes_ap.play("mad_1")
+
+func mad_2():
+  eyes_ap.play("mad_2")
+
+func pain():
+  eyes_ap.play("pain")
+
+func _bad_teeth_updated(num):
+  choose_anger()
+  if !State.pulling_teeth:
+    choose_idle()
+
+func _pulling():
+  print('PAIN!')
+  pain()
+
+func choose_idle():
+  if State.bad_teeth < 3:
+    idle()
+  elif State.bad_teeth < 5:
+    mad_1()
+  else:
+    mad_2()
+
+func choose_anger():
+  if State.bad_teeth < 3:
+    anger_ap.play("calm")
+  elif State.bad_teeth < 5:
+    anger_ap.play("anger_1")
+  elif State.bad_teeth < 6:
+    anger_ap.play("anger_2")
+  else:
+    anger_ap.play("anger_3")
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#  pass

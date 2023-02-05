@@ -8,7 +8,7 @@ extends Node
 # Load the custom images for the mouse cursor.
 #var arrow = load("res://VFX/Sprites/brush-Sheet.png")
 #var beam = load("res://beam.png")
-
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,3 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #  pass
+
+func rand(x, y):
+  rng.randomize()
+  return rng.randf_range(x,y)

@@ -1,0 +1,496 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/Shark.gd" type="Script" id=1]
+[ext_resource path="res://VFX/Sprites/fin-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Wave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tooth.tscn" type="PackedScene" id=4]
+[ext_resource path="res://VFX/Sprites/eye-right-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://VFX/Sprites/shark-Sheet.png" type="Texture" id=6]
+[ext_resource path="res://VFX/Sprites/eye-left-Sheet.png" type="Texture" id=7]
+[ext_resource path="res://VFX/Sprites/anger-mark-Sheet.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=9]
+resource_name = "anger_1"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/AngerSprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/AngerSprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Body/AngerSprite3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "anger_2"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/AngerSprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/AngerSprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Body/AngerSprite3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "anger_3"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/AngerSprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/AngerSprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Body/AngerSprite3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "calm"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/AngerSprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/AngerSprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Body/AngerSprite3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/EyeLeftSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/EyeRightSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "mad_1"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/EyeLeftSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/EyeRightSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mad_2"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/EyeLeftSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/EyeRightSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "pain"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Body/EyeLeftSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body/EyeRightSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Waves:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -300 ), Vector2( 0, -301 ), Vector2( 0, -302 ), Vector2( 0, -301 ), Vector2( 0, -300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/FinLeftSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/FinRightSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[node name="Shark" type="Node2D"]
+position = Vector2( 500, 300 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AngerAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../EyesAnimationPlayer")
+anims/anger_1 = SubResource( 9 )
+anims/anger_2 = SubResource( 8 )
+anims/anger_3 = SubResource( 7 )
+anims/calm = SubResource( 6 )
+
+[node name="EyesAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../AnimationPlayer")
+anims/idle = SubResource( 2 )
+anims/mad_1 = SubResource( 3 )
+anims/mad_2 = SubResource( 4 )
+anims/pain = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/idle = SubResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FinLeftSprite" type="Sprite" parent="Body"]
+position = Vector2( -160, 135 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="FinRightSprite" type="Sprite" parent="Body"]
+position = Vector2( 160, 135 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="SharkSprite" type="Sprite" parent="Body"]
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EyeLeftSprite" type="Sprite" parent="Body"]
+position = Vector2( -84, -89 )
+texture = ExtResource( 7 )
+hframes = 4
+
+[node name="EyeRightSprite" type="Sprite" parent="Body"]
+position = Vector2( 84, -89 )
+texture = ExtResource( 5 )
+hframes = 4
+
+[node name="AngerSprite1" type="Sprite" parent="Body"]
+position = Vector2( 87, -121 )
+texture = ExtResource( 8 )
+hframes = 3
+frame = 2
+
+[node name="AngerSprite2" type="Sprite" parent="Body"]
+position = Vector2( -117, -66 )
+texture = ExtResource( 8 )
+hframes = 3
+frame = 2
+
+[node name="AngerSprite3" type="Sprite" parent="Body"]
+position = Vector2( 123, -50 )
+texture = ExtResource( 8 )
+hframes = 3
+
+[node name="Teeth" type="Node2D" parent="Body"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tooth" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -94, 66 )
+
+[node name="Tooth2" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -70, 88 )
+
+[node name="Tooth3" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -42, 100 )
+
+[node name="Tooth4" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -14, 109 )
+
+[node name="Tooth5" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 16, 109 )
+
+[node name="Tooth6" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 45, 103 )
+
+[node name="Tooth7" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 72, 89 )
+
+[node name="Tooth8" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 95, 70 )
+
+[node name="Tooth9" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -92, 3 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth10" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -70, -15 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth11" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -45, -31 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth12" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -17, -39 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth13" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 14, -39 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth14" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 41, -29 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth15" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 68, -21 )
+scale = Vector2( 1, -1 )
+
+[node name="Tooth16" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 92, 0 )
+scale = Vector2( 1, -1 )
+
+[node name="Waves" type="Node2D" parent="."]
+position = Vector2( 0, -320 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wave" parent="Waves" instance=ExtResource( 3 )]
+position = Vector2( -168, 480 )
+
+[node name="Wave2" parent="Waves" instance=ExtResource( 3 )]
+position = Vector2( 1, 488 )
+scale = Vector2( -1, 1 )
+ap_offset = 1
+
+[node name="Wave3" parent="Waves" instance=ExtResource( 3 )]
+position = Vector2( 182, 479 )
+ap_offset = 2
