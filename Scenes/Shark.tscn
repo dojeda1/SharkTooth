@@ -423,9 +423,11 @@ __meta__ = {
 
 [node name="Tooth" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( -94, 66 )
+delay = 60
 
 [node name="Tooth2" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( -70, 88 )
+state = "dirty_2"
 
 [node name="Tooth3" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( -42, 100 )
@@ -435,6 +437,7 @@ position = Vector2( -14, 109 )
 
 [node name="Tooth5" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( 16, 109 )
+delay = 30
 
 [node name="Tooth6" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( 45, 103 )
@@ -456,6 +459,7 @@ scale = Vector2( 1, -1 )
 [node name="Tooth11" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( -45, -31 )
 scale = Vector2( 1, -1 )
+delay = 15
 
 [node name="Tooth12" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( -17, -39 )
@@ -468,6 +472,7 @@ scale = Vector2( 1, -1 )
 [node name="Tooth14" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( 41, -29 )
 scale = Vector2( 1, -1 )
+state = "dirty_1"
 
 [node name="Tooth15" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( 68, -21 )
@@ -476,6 +481,7 @@ scale = Vector2( 1, -1 )
 [node name="Tooth16" parent="Body/Teeth" instance=ExtResource( 4 )]
 position = Vector2( 92, 0 )
 scale = Vector2( 1, -1 )
+delay = 45
 
 [node name="Waves" type="Node2D" parent="."]
 position = Vector2( 0, -320 )

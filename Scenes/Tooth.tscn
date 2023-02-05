@@ -255,12 +255,15 @@ unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
-[node name="PullTImer" type="Timer" parent="Timers"]
+[node name="PullTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 0.8
 one_shot = true
 
 [node name="InitRotTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 one_shot = true
 
@@ -268,5 +271,6 @@ one_shot = true
 [connection signal="mouse_exited" from="." to="." method="_on_Tooth_mouse_exited"]
 [connection signal="timeout" from="Timers/RotTimer" to="." method="_on_RotTimer_timeout"]
 [connection signal="timeout" from="Timers/BrushTimer" to="." method="_on_BrushTimer_timeout"]
-[connection signal="timeout" from="Timers/PullTImer" to="." method="_on_PullTImer_timeout"]
+[connection signal="timeout" from="Timers/PullTimer" to="." method="_on_PullTImer_timeout"]
 [connection signal="timeout" from="Timers/InitRotTimer" to="." method="_on_InitRotTimer_timeout"]
+[connection signal="timeout" from="Timers/DelayTimer" to="." method="_on_DelayTimer_timeout"]

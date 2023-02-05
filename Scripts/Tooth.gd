@@ -8,19 +8,30 @@ export var is_dead = false
 export var is_dirty = false
 var is_active = false
 export var state = "empty"
+export var delay = 0
 
 onready var ap = $"%AnimationPlayer"
 onready var wiggle_ap = $"%WiggleAnimationPlayer"
 onready var init_rot_timer = $"%InitRotTimer"
 onready var rot_timer = $"%RotTimer"
 onready var brush_timer = $"%BrushTimer"
-onready var pull_timer = $"%PullTImer"
+onready var pull_timer = $"%PullTimer"
+onready var delay_timer = $"%DelayTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  wiggle_ap.play("idle")
-  next_state()
-  pass # Replace with function body.
+  print(delay)
+  ap.play(state)
+  if state != 'empty':
+    init_rot_timer.wait_time = Global.rand(5, 10)
+  #  init_rot_timer.wait_time = 0.2
+    init_rot()
+  if delay > 0:
+    delay_timer.wait_time = delay
+    delay_timer.start(0)
+  else:
+    next_state()
+    pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -196,4 +207,9 @@ func _on_PullTImer_timeout():
 func _on_InitRotTimer_timeout():
   next_state()
   rot_timer.start(0)
+  pass # Replace with function body.
+
+
+func _on_DelayTimer_timeout():
+  next_state()
   pass # Replace with function body.
