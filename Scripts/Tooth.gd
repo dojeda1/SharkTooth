@@ -13,6 +13,7 @@ export var hidden = false
 
 onready var ap = $"%AnimationPlayer"
 onready var wiggle_ap = $"%WiggleAnimationPlayer"
+onready var sparkle_ap = $"SparkleAnimationPlayer"
 onready var init_rot_timer = $"%InitRotTimer"
 onready var rot_timer = $"%RotTimer"
 onready var brush_timer = $"%BrushTimer"
@@ -32,6 +33,7 @@ onready var sparkle_sfx = $"%SparkleSFX"
 # Called when the node enters the scene tree for the first time.
 func _ready():
   ap.play(state)
+  sparkle_idle()
   if hidden:
     self.visible = false
   if state != 'empty':
@@ -99,6 +101,12 @@ func remove():
   State.add_bad_teeth(-1)
 #  State.add_points(500)
   ap.play("remove")
+
+func sparkle_idle():
+  sparkle_ap.play("idle")
+
+func sparkle():
+  sparkle_ap.play("sparkle")
 
 func attempt_clean():
     if !is_dead:
@@ -192,6 +200,7 @@ func prev_state():
     State.add_points(100)
     play_coin_sfx()
     play_sparkle_sfx()
+    sparkle()
     idle()
 
 func play_brush_sfx():
