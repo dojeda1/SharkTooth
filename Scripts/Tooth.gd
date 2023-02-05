@@ -9,6 +9,7 @@ export var is_dirty = false
 var is_active = false
 export var state = "empty"
 export var delay = 0
+export var hidden = false
 
 onready var ap = $"%AnimationPlayer"
 onready var wiggle_ap = $"%WiggleAnimationPlayer"
@@ -21,6 +22,8 @@ onready var delay_timer = $"%DelayTimer"
 # Called when the node enters the scene tree for the first time.
 func _ready():
   ap.play(state)
+  if hidden:
+    self.visible = false
   if state != 'empty':
     init_rot_timer.wait_time = Global.rand(5, 10)
   #  init_rot_timer.wait_time = 0.2
@@ -94,15 +97,16 @@ func attempt_clean():
       begin_pull()
 
 func reset_tooth():
-  if state == "rotting":
-    wiggle_ap.play("wiggle_large")
-  else:
-    wiggle_ap.play("idle")
-  pull_timer.stop()
-  brush_timer.stop()
-  rot_timer.start(0)
-  State.pulling_teeth = false
-  State.emit_bad_teeth()
+  if state != 'empty':
+    if state == "rotting":
+      wiggle_ap.play("wiggle_large")
+    else:
+      wiggle_ap.play("idle")
+    pull_timer.stop()
+    brush_timer.stop()
+    rot_timer.start(0)
+    State.pulling_teeth = false
+    State.emit_bad_teeth()
 
 func clean_tooth():
   if is_active:
@@ -110,7 +114,7 @@ func clean_tooth():
   else:
     if state == "idle":
       rot_timer.start(0)
-    else:
+    elif state != "empty":
       init_rot()
   prev_state()
 
@@ -210,5 +214,6 @@ func _on_InitRotTimer_timeout():
 
 
 func _on_DelayTimer_timeout():
+  self.visible = true
   next_state()
   pass # Replace with function body.

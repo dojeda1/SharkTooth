@@ -483,6 +483,34 @@ position = Vector2( 92, 0 )
 scale = Vector2( 1, -1 )
 delay = 45
 
+[node name="Tooth17" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 111, 28 )
+rotation = -0.302825
+scale = Vector2( 1, -1 )
+delay = 120
+hidden = true
+
+[node name="Tooth18" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -111, 30 )
+rotation = 0.18596
+scale = Vector2( 1, -1 )
+delay = 180
+hidden = true
+
+[node name="Tooth19" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( -26, -8 )
+rotation = -0.468034
+scale = Vector2( 1, -1 )
+delay = 240
+hidden = true
+
+[node name="Tooth20" parent="Body/Teeth" instance=ExtResource( 4 )]
+position = Vector2( 66, -49 )
+rotation = -7.99218
+scale = Vector2( 1, -1 )
+delay = 300
+hidden = true
+
 [node name="Waves" type="Node2D" parent="."]
 position = Vector2( 0, -320 )
 __meta__ = {
