@@ -267,7 +267,6 @@ anims/wiggle_small = SubResource( 11 )
 
 [node name="RotTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 5.0
 
 [node name="BrushTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
