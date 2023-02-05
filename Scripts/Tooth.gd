@@ -20,7 +20,6 @@ onready var delay_timer = $"%DelayTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  print(delay)
   ap.play(state)
   if state != 'empty':
     init_rot_timer.wait_time = Global.rand(5, 10)

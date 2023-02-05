@@ -38,7 +38,7 @@ func check_click():
 
 func _on_Cursor_area_entered(area):
   if area.is_in_group("tooth"):
-    print(area.is_dead)
+
     if area.is_dead:
       sprite.texture = forceps_tex
     else:
