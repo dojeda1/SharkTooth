@@ -11,6 +11,7 @@ onready var ui = $"%Control"
 onready var menu = $"%MenuControl"
 onready var final_score_label = $"%FinalScoreLabel"
 onready var high_score_label = $"%HighScoreLabel"
+onready var game_over_sfx = $"%GameOverSFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,11 +29,14 @@ func reload():
   get_tree().reload_current_scene()
 
 func _end_game():
+  play_game_over_sfx()
   final_score_label.text = "$" + str(State.score)
   high_score_label.text = "$" + str(State.high_score)
   ui.visible = false
   menu.visible = true
 
+func play_game_over_sfx():
+  game_over_sfx.play()
 
 func _on_Button_pressed():
   reload()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/plastic-squeak2-103383.mp3-1e4e07a3690bbd452dfb2dd49df468c7.mp3str"
+
+[deps]
+
+source_file="res://SFX/Sounds/plastic-squeak2-103383.mp3"
+dest_files=[ "res://.import/plastic-squeak2-103383.mp3-1e4e07a3690bbd452dfb2dd49df468c7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

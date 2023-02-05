@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/plastic-shake-5-38187.mp3-6513c497b7ba68881cec6c63cb71e92b.mp3str"
+
+[deps]
+
+source_file="res://SFX/Sounds/plastic-shake-5-38187.mp3"
+dest_files=[ "res://.import/plastic-shake-5-38187.mp3-6513c497b7ba68881cec6c63cb71e92b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

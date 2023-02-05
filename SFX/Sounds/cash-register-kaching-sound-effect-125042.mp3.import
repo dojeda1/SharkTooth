@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cash-register-kaching-sound-effect-125042.mp3-84823adb886690ba62648659cd5403cc.mp3str"
+
+[deps]
+
+source_file="res://SFX/Sounds/cash-register-kaching-sound-effect-125042.mp3"
+dest_files=[ "res://.import/cash-register-kaching-sound-effect-125042.mp3-84823adb886690ba62648659cd5403cc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
