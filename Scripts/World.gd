@@ -33,6 +33,7 @@ func _process(delta):
     teeth_label.text = str(State.bad_teeth)
 
 func reload():
+  State.reset()
   get_tree().reload_current_scene()
 
 func _end_game():
