@@ -389,6 +389,7 @@ stream = ExtResource( 11 )
 volume_db = 12.0
 
 [connection signal="input_event" from="." to="." method="_on_Tooth_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Tooth_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Tooth_mouse_exited"]
 [connection signal="timeout" from="Timers/RotTimer" to="." method="_on_RotTimer_timeout"]
 [connection signal="timeout" from="Timers/BrushTimer" to="." method="_on_BrushTimer_timeout"]

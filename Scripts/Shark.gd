@@ -48,18 +48,13 @@ func choose_idle():
     mad_2()
 
 func choose_anger():
-  print('BT:', str(State.bad_teeth))
   if State.bad_teeth < 2:
-    print('calm')
     anger_ap.play("calm")
   elif State.bad_teeth < 4:
-    print('a1')
     anger_ap.play("anger_1")
   elif State.bad_teeth < 5:
-    print('A2')
     anger_ap.play("anger_2")
   else:
-    print('A3')
     anger_ap.play("anger_3")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

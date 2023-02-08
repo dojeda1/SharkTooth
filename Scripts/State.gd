@@ -11,6 +11,7 @@ var score = 0
 var high_score = 0
 
 signal bad_teeth_updated(num)
+signal tooth_check(dead)
 signal pulling
 signal end_game
 
@@ -52,6 +53,9 @@ func emit_pulling():
 func emit_end_game():
   emit_signal("end_game")
 
+func emit_tooth_check(dead):
+  emit_signal("tooth_check", dead)
+
 func save_game_data():
   var save_file = File.new()
   save_file.open(save_path, File.WRITE)
@@ -59,7 +63,6 @@ func save_game_data():
   print(new_data)
   save_file.store_line(new_data)
   save_file.close()
-  print('Save Data: ', high_score)
   pass
 
 func load_game_data():
@@ -70,7 +73,6 @@ func load_game_data():
   var node_data = parse_json(load_file.get_line())
   high_score = node_data["high_score"]
   load_file.close()
-  print('Data Loaded')
   pass
 
 func reset_data():

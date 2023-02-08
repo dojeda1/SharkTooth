@@ -239,7 +239,6 @@ func _on_Tooth_input_event(viewport, event, shape_idx):
   if (event is InputEventMouseButton && event.pressed):
     is_active = true
     rot_timer.stop()
-#    print("Clicked " + self.name + " dead:" + str(is_dead))
     attempt_clean()
   elif (event is InputEventMouseButton && !event.pressed && is_active):
     is_active = false
@@ -280,4 +279,10 @@ func _on_InitRotTimer_timeout():
 func _on_DelayTimer_timeout():
   self.visible = true
   next_state()
+  pass # Replace with function body.
+
+
+func _on_Tooth_mouse_entered():
+  if state != "empty":
+    State.emit_tooth_check(is_dead)
   pass # Replace with function body.
