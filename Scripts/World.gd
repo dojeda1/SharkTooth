@@ -16,10 +16,14 @@ onready var rect_timer = $"%RectTimer"
 onready var game_over_sfx = $"%GameOverSFX"
 onready var chomp_sfx = $"%ChompSFX"
 
+onready var score_fx = $"%ScoreFX"
+onready var cursor = $"%Cursor"
+const cash_fx = preload("res://Scenes/CashFX.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
   State.connect("end_game", self, "_end_game")
-  State.reset()
+  State.connect("add_cash", self, "_add_cash")
   pass # Replace with function body.
 
 
@@ -39,6 +43,13 @@ func _end_game():
   ui.visible = false
   menu.visible = true
 
+func _add_cash(amount):
+    var cash = cash_fx.instance()
+    cash.update_text(amount)
+    var pos = cursor.position - (get_viewport_rect().size/2)
+    cash.position = pos
+    print("cash:", cash.global_position)
+    score_fx.add_child(cash)
 
 func play_game_over_sfx():
   game_over_sfx.play()

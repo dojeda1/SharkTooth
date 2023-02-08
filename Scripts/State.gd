@@ -11,6 +11,7 @@ var score = 0
 var high_score = 0
 
 signal bad_teeth_updated(num)
+signal add_cash(num)
 signal tooth_check(dead)
 signal pulling
 signal end_game
@@ -35,6 +36,7 @@ func add_bad_teeth(amount):
     emit_end_game()
 
 func add_points(amount):
+  emit_signal("add_cash", amount)
   score += amount
 
 func reset():

@@ -109,6 +109,8 @@ func sparkle():
   sparkle_ap.play("sparkle")
 
 func attempt_clean():
+  if state != 'empty':
+    State.emit_tooth_check(is_dead)
     if !is_dead:
       begin_brush()
     else:
@@ -187,17 +189,17 @@ func next_state():
 func prev_state():
   if state == "dirty_3" || state == "rotting":
     state = "dirty_2"
-    State.add_points(300)
+    State.add_points(200)
     play_coin_sfx()
     dirty_2()
   elif state == "dirty_2":
     state = "dirty_1"
-    State.add_points(200)
+    State.add_points(100)
     play_coin_sfx()
     dirty_1()
   elif state == "dirty_1":
     state = "idle"
-    State.add_points(100)
+    State.add_points(50)
     play_coin_sfx()
     play_sparkle_sfx()
     sparkle()

@@ -151,6 +151,7 @@ text = "Play Again"
 flat = true
 
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource( 3 )]
+unique_name_in_owner = true
 z_index = 4096
 
 [node name="Waves2" type="Node2D" parent="."]
@@ -188,6 +189,9 @@ unique_name_in_owner = true
 stream = ExtResource( 8 )
 volume_db = 10.0
 pitch_scale = 0.9
+
+[node name="ScoreFX" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="CanvasLayer/MenuControl/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="RectTimer" to="." method="_on_RectTimer_timeout"]
